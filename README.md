@@ -44,18 +44,21 @@ claude mcp add --transport http normi https://mcp.normi.fr/mcp --header "Authori
 "Évolution des prix à Bordeaux depuis 2020"
 ```
 
-## 8 MCP Tools
+## Key DVF tools
+
+Normi exposes 32 MCP tools across DVF, DPE, BDNB, ANIL, SIRENE and portfolio workflows. The complete,
+up-to-date catalog is available in the [Normi MCP documentation](https://normi.fr/docs/mcp).
 
 | Tool | Description | Credits |
 |------|-------------|---------|
-| `search_properties` | Search transactions by location, type, price, surface | 5 |
-| `get_market_stats` | Aggregate stats: median price, price/m², volume | 5 |
-| `find_comparables` | Find similar properties by proximity and surface | 10 |
-| `get_price_trends` | Price evolution over time (month/quarter/year) | 10 |
-| `compare_neighborhoods` | Compare 2-5 locations side by side | 10 |
-| `get_market_activity` | Transaction volume and seasonality | 10 |
-| `get_market_heatmap` | Price data by zone for a department | 15 |
-| `get_property_history` | Transaction history for a specific address | 20 |
+| `search_property_transactions` | Search transactions by location, type, price, surface | 5 |
+| `analyze_market_statistics` | Aggregate stats: median price, price/m², volume | 5 |
+| `find_property_comparables` | Find similar properties by proximity and surface | 10 |
+| `analyze_price_trends` | Price evolution over time (month/quarter/year) | 10 |
+| `compare_locations` | Compare 2-5 locations side by side | 10 |
+| `analyze_market_activity` | Transaction volume and seasonality | 10 |
+| `get_zonal_price_distribution` | Price statistics by zone (JSON for map visualizations) | 15 |
+| `lookup_property_history` | Transaction history for a specific address | 20 |
 
 ## REST API
 
@@ -70,8 +73,9 @@ curl -H "X-API-Key: normi_YOUR_TOKEN" \
 
 | Plan | Credits/month | Rate Limit | Price |
 |------|--------------|------------|-------|
-| **Free** | 100 | 10 req/min | Free |
-| **Agent** | 55,000 | 30 req/min | 49 EUR/mo |
+| **Free** | 500 | 60 req/min | Free |
+| **Indie** | 10,000 | 60 req/min | 19 EUR/mo |
+| **Agent** | 55,000 | 60 req/min | 49 EUR/mo |
 | **Pro** | 175,000 | 60 req/min | 149 EUR/mo |
 | **Enterprise** | 500,000 | 120 req/min | 399 EUR/mo |
 
@@ -81,8 +85,8 @@ One-time credit packs also available. [See pricing](https://normi.fr/pricing).
 
 - **Source**: DVF (Demandes de Valeurs Foncieres) — French government open data
 - **Coverage**: All of metropolitan France, 2014-present
-- **Volume**: 17.4M+ geocoded transactions
-- **Updates**: Semi-annual (April & October)
+- **Volume**: 18M+ geocoded transactions
+- **Updates**: Annual (DGFiP publication cadence)
 - **License**: [Licence Ouverte 2.0](https://www.etalab.gouv.fr/licence-ouverte-open-licence/)
 
 ## Links
