@@ -1,0 +1,20 @@
+# Smithery configuration for the @normi/mcp-dvf stdio package.
+# The API key belongs to the end user and is never stored in this repository.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - normiApiKey
+    properties:
+      normiApiKey:
+        type: string
+        description: Votre clé API Normi, disponible dans https://normi.fr/dashboard/tokens
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@normi/mcp-dvf'],
+      env: { NORMI_API_KEY: config.normiApiKey }
+    })
+exampleConfig:
+  normiApiKey: normi_YOUR_TOKEN_HERE

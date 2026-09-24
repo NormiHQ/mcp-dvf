@@ -1,20 +1,26 @@
-# Normi — French Real Estate Data MCP Server
+# Normi — serveur MCP de données immobilières françaises
 
-> Access 17M+ geocoded French property transactions (DVF) from Claude Desktop, Cursor, VS Code, or any MCP client.
+> Interrogez les ventes DVF, les DPE ADEME et la BDNB depuis Claude Desktop, Cursor, VS Code ou tout client MCP.
 
 [![npm](https://img.shields.io/npm/v/@normi/mcp-dvf)](https://www.npmjs.com/package/@normi/mcp-dvf)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-listed-blue)](https://registry.modelcontextprotocol.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Quick Start (2 minutes)
+## Ce qui distingue Normi
 
-### 1. Get your free API key
+- **DVF nettoyée** : les ventes en bloc, les valeurs aberrantes et les VEFA sont exclues par défaut pour des résultats plus comparables.
+- **Données croisées** : les mutations DVF peuvent être enrichies par les DPE ADEME et la BDNB, qui couvre plus de 32 millions de bâtiments.
+- **MCP et REST** : les mêmes analyses sont disponibles par serveur MCP ou via l'[API REST](https://normi.fr/docs/api).
 
-Sign up at **[normi.fr](https://normi.fr)** and create a token in your [dashboard](https://normi.fr/dashboard/tokens).
+## Installation (2 minutes)
 
-### 2. Configure your MCP client
+### 1. Créez votre clé API gratuite
 
-**Claude Desktop** — edit `claude_desktop_config.json`:
+Créez un compte sur **[normi.fr](https://normi.fr)** puis une clé dans votre [tableau de bord](https://normi.fr/dashboard/tokens).
+
+### 2. Configurez votre client MCP
+
+**Claude Desktop** — ajoutez ceci à `claude_desktop_config.json` :
 
 ```json
 {
@@ -30,13 +36,24 @@ Sign up at **[normi.fr](https://normi.fr)** and create a token in your [dashboar
 }
 ```
 
-**Cursor / VS Code (Claude Code)** — add via CLI:
+**Cursor** — ajoutez ceci à `.cursor/mcp.json` pour la connexion distante :
 
-```bash
-claude mcp add --transport http normi https://mcp.normi.fr/mcp --header "Authorization: Bearer normi_YOUR_TOKEN"
+```json
+{
+  "mcpServers": {
+    "normi": {
+      "url": "https://mcp.normi.fr/mcp",
+      "headers": {
+        "Authorization": "Bearer normi_YOUR_TOKEN_HERE"
+      }
+    }
+  }
+}
 ```
 
-### 3. Start asking questions
+L'URL MCP distante est `https://mcp.normi.fr/mcp`. Elle requiert l'en-tête `Authorization: Bearer <votre_clé_Normi>`.
+
+### 3. Posez vos questions
 
 ```
 "Quels sont les prix au m² à Paris 15ème ?"
@@ -44,10 +61,9 @@ claude mcp add --transport http normi https://mcp.normi.fr/mcp --header "Authori
 "Évolution des prix à Bordeaux depuis 2020"
 ```
 
-## Key DVF tools
+## Outils principaux
 
-Normi exposes 32 MCP tools across DVF, DPE, BDNB, ANIL, SIRENE and portfolio workflows. The complete,
-up-to-date catalog is available in the [Normi MCP documentation](https://normi.fr/docs/mcp).
+Normi propose 33 outils MCP couvrant DVF, DPE, BDNB, ANIL, SIRENE et les workflows de portefeuille. Le catalogue complet est disponible dans la [documentation MCP Normi](https://normi.fr/docs/mcp).
 
 | Tool | Description | Credits |
 |------|-------------|---------|
@@ -60,41 +76,29 @@ up-to-date catalog is available in the [Normi MCP documentation](https://normi.f
 | `get_zonal_price_distribution` | Price statistics by zone (JSON for map visualizations) | 15 |
 | `lookup_property_history` | Transaction history for a specific address | 20 |
 
-## REST API
+## API REST
 
-Normi also offers a REST API for non-MCP use cases. [Full documentation](https://normi.fr/docs/api).
+Les mêmes analyses sont proposées par l'API REST pour les intégrations sans MCP. [Documentation complète](https://normi.fr/docs/api).
 
 ```bash
 curl -H "X-API-Key: normi_YOUR_TOKEN" \
   "https://mcp.normi.fr/v1/stats/market?code_postal=75001"
 ```
 
-## Pricing
+## Données
 
-| Plan | Credits/month | Rate Limit | Price |
-|------|--------------|------------|-------|
-| **Free** | 500 | 60 req/min | Free |
-| **Indie** | 10,000 | 60 req/min | 19 EUR/mo |
-| **Agent** | 55,000 | 60 req/min | 49 EUR/mo |
-| **Pro** | 175,000 | 60 req/min | 149 EUR/mo |
-| **Enterprise** | 500,000 | 120 req/min | 399 EUR/mo |
-
-One-time credit packs also available. [See pricing](https://normi.fr/pricing).
-
-## Data
-
-- **Source**: DVF (Demandes de Valeurs Foncieres) — French government open data
-- **Coverage**: All of metropolitan France, 2014-present
-- **Volume**: 18M+ geocoded transactions
-- **Updates**: Annual (DGFiP publication cadence)
-- **License**: [Licence Ouverte 2.0](https://www.etalab.gouv.fr/licence-ouverte-open-licence/)
+- **DVF** (Demandes de valeurs foncières) : ventes immobilières françaises géocodées, 2014–2025, publiées annuellement par la DGFiP.
+- **DPE** : diagnostics de performance énergétique issus de l'ADEME.
+- **BDNB** : caractéristiques du bâti, avec plus de 32 millions de bâtiments.
+- **Licence DVF** : [Licence Ouverte 2.0](https://www.etalab.gouv.fr/licence-ouverte-open-licence/).
 
 ## Links
 
 - [Documentation](https://normi.fr/docs)
+- [Catalogue MCP](https://normi.fr/docs/mcp)
 - [API Playground](https://normi.fr/docs/api/playground)
-- [Dashboard](https://normi.fr/dashboard)
-- [npm package](https://www.npmjs.com/package/@normi/mcp-dvf)
+- [Tableau de bord](https://normi.fr/dashboard)
+- [Paquet npm](https://www.npmjs.com/package/@normi/mcp-dvf)
 
 ## License
 
