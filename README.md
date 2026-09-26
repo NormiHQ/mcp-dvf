@@ -1,6 +1,6 @@
 # Normi — serveur MCP de données immobilières françaises
 
-> Interrogez les ventes DVF, les DPE ADEME et la BDNB depuis Claude Desktop, Cursor, VS Code ou tout client MCP.
+> Interrogez les ventes DVF, les DPE ADEME et la BDNB depuis claude.ai, ChatGPT, Claude Desktop, Cursor, VS Code ou tout client MCP — connexion OAuth en un clic, ou clé API.
 
 [![npm](https://img.shields.io/npm/v/@normi/mcp-dvf)](https://www.npmjs.com/package/@normi/mcp-dvf)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-listed-blue)](https://registry.modelcontextprotocol.io)
@@ -14,13 +14,27 @@
 
 ## Installation (2 minutes)
 
-### 1. Créez votre clé API gratuite
+### Option A — Connexion OAuth (claude.ai, ChatGPT, Claude Code…)
+
+Ajoutez le serveur distant **`https://mcp.normi.fr/mcp`** dans votre client, puis connectez-vous à Normi et
+autorisez l'accès. Aucune clé à copier : si votre compte n'a pas encore de clé API, une clé gratuite
+(500 crédits) est créée à la première autorisation. Les crédits sont débités sur la clé active de votre compte.
+
+- **claude.ai, Claude Desktop, mobile, Cowork** — Paramètres → Connecteurs → Ajouter → connecteur personnalisé → collez l'URL. [Guide pas à pas](https://www.normi.fr/docs/install/claude)
+- **ChatGPT** — créez une application avec l'URL et l'authentification OAuth (nom libre). [Guide](https://www.normi.fr/docs/install/chatgpt)
+- **Claude Code** :
+
+  ```bash
+  claude mcp add --transport http normi https://mcp.normi.fr/mcp
+  ```
+
+  puis `/mcp` dans Claude Code pour vous connecter.
+
+### Option B — Clé API (STDIO, Cursor, scripts)
 
 Créez un compte sur **[normi.fr](https://normi.fr)** puis une clé dans votre [tableau de bord](https://normi.fr/dashboard/tokens).
 
-### 2. Configurez votre client MCP
-
-**Claude Desktop** — ajoutez ceci à `claude_desktop_config.json` :
+**Claude Desktop (STDIO)** — ajoutez ceci à `claude_desktop_config.json` :
 
 ```json
 {
@@ -51,9 +65,10 @@ Créez un compte sur **[normi.fr](https://normi.fr)** puis une clé dans votre [
 }
 ```
 
-L'URL MCP distante est `https://mcp.normi.fr/mcp`. Elle requiert l'en-tête `Authorization: Bearer <votre_clé_Normi>`.
+L'URL MCP distante `https://mcp.normi.fr/mcp` accepte la connexion OAuth 2.1 ou l'en-tête
+`Authorization: Bearer <votre_clé_Normi>`. L'API REST n'accepte que les clés API.
 
-### 3. Posez vos questions
+### Posez vos questions
 
 ```
 "Quels sont les prix au m² à Paris 15ème ?"
