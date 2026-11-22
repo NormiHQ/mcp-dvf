@@ -2,6 +2,8 @@
 
 > Interrogez les ventes DVF, les DPE ADEME et la BDNB depuis claude.ai, ChatGPT, Claude Desktop, Cursor, VS Code ou tout client MCP — connexion OAuth en un clic, ou clé API.
 
+**Site :** [normi.fr](https://www.normi.fr) · **Guide complet :** [Serveur MCP DVF, installation, outils et limites](https://www.normi.fr/mcp-dvf)
+
 [![npm](https://img.shields.io/npm/v/@normi/mcp-dvf)](https://www.npmjs.com/package/@normi/mcp-dvf)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-listed-blue)](https://registry.modelcontextprotocol.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -10,7 +12,7 @@
 
 - **DVF nettoyée** : les ventes en bloc, les valeurs aberrantes et les VEFA sont exclues par défaut pour des résultats plus comparables.
 - **Données croisées** : les mutations DVF peuvent être enrichies par les DPE ADEME et la BDNB, qui couvre plus de 32 millions de bâtiments.
-- **MCP et REST** : les mêmes analyses sont disponibles par serveur MCP ou via l'[API REST](https://normi.fr/docs/api).
+- **MCP et REST** : les mêmes analyses sont disponibles par serveur MCP ou via l'[API REST](https://www.normi.fr/docs/api).
 
 ## Installation (2 minutes)
 
@@ -32,7 +34,7 @@ autorisez l'accès. Aucune clé à copier : si votre compte n'a pas encore de cl
 
 ### Option B — Clé API (STDIO, Cursor, scripts)
 
-Créez un compte sur **[normi.fr](https://normi.fr)** puis une clé dans votre [tableau de bord](https://normi.fr/dashboard/tokens).
+Créez un compte sur **[normi.fr](https://www.normi.fr)** puis une clé dans votre [tableau de bord](https://www.normi.fr/dashboard/tokens).
 
 **Claude Desktop (STDIO)** — ajoutez ceci à `claude_desktop_config.json` :
 
@@ -78,7 +80,7 @@ L'URL MCP distante `https://mcp.normi.fr/mcp` accepte la connexion OAuth 2.1 ou 
 
 ## Outils principaux
 
-Normi propose 33 outils MCP couvrant DVF, DPE, BDNB, ANIL, SIRENE et les workflows de portefeuille. Le catalogue complet est disponible dans la [documentation MCP Normi](https://normi.fr/docs/mcp).
+Normi propose 33 outils MCP couvrant DVF, DPE, BDNB, ANIL, SIRENE et les workflows de portefeuille. Le catalogue complet est disponible dans la [documentation MCP Normi](https://www.normi.fr/docs/mcp).
 
 | Tool | Description | Credits |
 |------|-------------|---------|
@@ -93,7 +95,7 @@ Normi propose 33 outils MCP couvrant DVF, DPE, BDNB, ANIL, SIRENE et les workflo
 
 ## API REST
 
-Les mêmes analyses sont proposées par l'API REST pour les intégrations sans MCP. [Documentation complète](https://normi.fr/docs/api).
+Les mêmes analyses sont proposées par l'API REST pour les intégrations sans MCP. [Documentation complète](https://www.normi.fr/docs/api).
 
 ```bash
 curl -H "X-API-Key: normi_YOUR_TOKEN" \
@@ -109,10 +111,12 @@ curl -H "X-API-Key: normi_YOUR_TOKEN" \
 
 ## Links
 
-- [Documentation](https://normi.fr/docs)
-- [Catalogue MCP](https://normi.fr/docs/mcp)
-- [API Playground](https://normi.fr/docs/api/playground)
-- [Tableau de bord](https://normi.fr/dashboard)
+- [Normi](https://www.normi.fr)
+- [Serveur MCP DVF : guide d'installation](https://www.normi.fr/mcp-dvf)
+- [Documentation](https://www.normi.fr/docs)
+- [Catalogue MCP](https://www.normi.fr/docs/mcp)
+- [API Playground](https://www.normi.fr/docs/api/playground)
+- [Tableau de bord](https://www.normi.fr/dashboard)
 - [Paquet npm](https://www.npmjs.com/package/@normi/mcp-dvf)
 
 ## License
